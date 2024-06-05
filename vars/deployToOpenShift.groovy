@@ -10,6 +10,3 @@ def call(String OpenShiftCredentialsID, String openshiftClusterurl, String opens
         """
 
     }
-
-}
-
