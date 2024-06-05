@@ -1,1 +1,0 @@
-# jenkins-oc-shared-library
