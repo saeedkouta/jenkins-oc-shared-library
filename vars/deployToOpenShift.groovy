@@ -1,8 +1,10 @@
-def call(String openshiftServer, String project, String imageName, String registry, String buildId, String credentialsId) {
-    withCredentials([string(credentialsId: credentialsId, variable: 'OPENSHIFT_TOKEN')]) {
-        sh "oc login ${openshiftServer} --token=${OPENSHIFT_TOKEN}"
-        sh "oc project ${project}"
-        sh "oc set image dc/${imageName} ${imageName}=${registry}/${imageName}:${buildId}"
+def call(String server, String project, String imageName, String registry, String buildId, String credentialsId) {
+    withCredentials([string(credentialsId: "${credentialsId}", variable: 'TOKEN')]) {
+        sh """
+        oc login ${server} --token=${TOKEN}
+        oc project ${project}
+        oc set image deployment/${imageName} ${imageName}=${registry}/${imageName}:${buildId} --namespace=${project}
+        """
     }
 }
 
