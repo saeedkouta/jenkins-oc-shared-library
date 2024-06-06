@@ -1,6 +1,6 @@
-def call(String imageName, int buildNumber) {
+def call(String imageName, BUILD_NUMBER) {
     // Update the image in the deployment.yml file
     sh """
-    sed -i 's|image: .*|image: ${imageName}:${buildNumber}|g' deployment.yml
+    sed -i 's|image: .*|image: ${imageName}:${BUILD_NUMBER}|g' deployment.yml
     """
 }
